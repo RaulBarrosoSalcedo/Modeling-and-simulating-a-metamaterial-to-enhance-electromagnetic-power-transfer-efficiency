@@ -1,0 +1,996 @@
+
+%% bare_jrnl.ENZtex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+\usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+ \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+\usepackage{amssymb}
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+\usepackage{float}
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+\usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+\usepackage{soul}
+%\usepackage{xcolor}
+%\newcommand{\highlight}[1]{%
+% \colorbox{yellow!50}{$\displaystyle#1$}}
+\usepackage{multirow}
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{https://orcid.org/0000-0003-3357-3887}.
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage[english]{babel}
+\usetikzlibrary{datavisualization}
+\usepackage{pgfplots}
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+%\usepackage[spanish]{babel}
+% correct bad hyphenation here
+\hyphenation{cri-ti-cal example Nevertheless comprehensive transfer electric properties electromagnetic minimal negligible throughout However permittivity dependence current associated applications parameters increases numerical approximation uti-li-zed am-pli-tu-de commonly metallic metamaterial representation conductor numerically proposed incorporating studied incorporating compared engineering biomedical designing values behavior materials matching practical transformer heating periodicity Likewise microwave telecommunications highlighted transmitted approximately macroscopic dielectric exotic metamaterials con-si-de-red Marcano}
+
+
+%\newcounter{mycounter}
+\setcounter{figure}{6}
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Modeling and simulating a metamaterial to enhance electromagnetic power transfer efficiency (set of Figures)}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+% \href{https://orcid.org/0000-0002-2077-3559}{\includegraphics[scale=1]{MetamaterialCCC.png}}
+
+
+%\hyperlink{thesentence}{any sentence}
+
+\author{R.~Barroso,~W.~Malpica~and A. Zozaya~% <-this % stops a space
+\thanks{R. Barroso, is with the Electronic and Circuits Department, Simon Bol{\'i}var University, Miranda State, Venezuela, (e-mail: rbarroso@usb.ve)}% <-this % stops a space
+
+\thanks{W. Malpica is with the Electrical Engineering School, Universidad Central de Venezuela, Caracas, Venezuela,(e-mail: wilmer.malpica.ucv@gmail.com).}
+
+\thanks{A. Zozaya, Departamento de Electricidad, Universidad Tecnol{\'o}gica Metropolitana (UTEM), Santiago, Chile, a.zozayas@utem.cl.}
+
+}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{IEEE LATIN AMERICA TRANSACTIONS,~Vol.~, No.~, 2025}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+Several microwave power transfer efficiency applications involve interfaces where more than half of the incident wave's power density is frequently reflected. To enhance this efficiency, various media for impedance matching between volumetric materials used in biomedical, industrial, and environmental remediation applications have been proposed. However, they either exhibit high losses or require a specialized manufacturing process. Given that the use of volumetric metamaterials as matching media is an underexplored area of research, the authors of this paper first propose, model, and simulate a metallic cubic conductor metamaterial to investigate its understudied parameters. Then, the metamaterial is simulated in a quarter-wavelenght impedance transformer configuration to improve the efficiency of electromagnetic wave power transfer at an air-water interface. Numerical simulations and analytical modeling of this configuration show that the power density of the transmitted wave more than doubles respect to the interface without the proposed matching system. This improvement is achieved since the metamaterial has an intrinsic impedance within the same range as that of the materials to be matched, since the metamaterial is a low loss, a positively polarizable and exhibits a mu-near zero behaviour. In contrast to other impedance matching media, the suggested metamaterial has a low attenuation constant, offers a wide range of intrinsic impedance values, and can be constructed with readily available materials.
+\end{abstract}
+
+ 
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+MNZ, matching, absorber, microwave, WPT.
+\end{IEEEkeywords}
+
+
+
+
+\IEEEpeerreviewmaketitle
+
+.\newline
+
+\begin{figure}[h]
+\begin{center} 
+\begin{tikzpicture}[xscale=1,yscale=1] % This is the Fig. 7 code, the permitivitty for the negligible losses case. 
+
+\begin{axis}[ymax=100, ymin=1, xmax=1.09, xmin=0,
+	xlabel = {$b/a$},
+    ylabel = {${\epsilon}_{m}'/{\epsilon}_{0}$},
+    width = 0.47\textwidth,
+    height = 0.23\textheight,
+    ymode = log,
+    legend pos=north west]
+
+
+\addplot [ domain=0:1, samples=100, color=red,]
+{1/(1.005-x)}; % This is the analytical formulae for permitivitty. x variable equals to b/a.
+
+\addplot[
+ scatter, only marks,
+    color=blue,
+        mark=square,
+    ]
+    coordinates {(0.0004,	1)
+(0.04,	1.003022571)
+(0.08,	1.007045622)
+(0.12,	1.017357388)
+(0.16,	1.029897338)
+(0.2,	1.051533338)
+(0.24,	1.062720992)
+(0.28,	1.105888571)
+(0.32,	1.153035714)
+(0.36,	1.206265574)
+(0.40,	1.273706611)
+(0.44,	1.357611296)
+(0.48,	1.475488125)
+(0.52,	1.620978782)
+(0.56,	1.801188932)
+(0.6,	2.039932405)
+(0.64,	2.313586004)
+(0.68,	2.655272916)
+(0.72,	3.097714044)
+(0.76,	3.696775733)
+(0.80,	4.536731324)
+(0.84,	5.782176167)
+(0.88,	7.8890292)
+(0.92,	12.07711347)
+(0.96,	24.66218561)
+    };% These are the HFSS numerical results, for b/a = 1/24, 2/24, ... 23/24.
+
+
+    \legend{\small Proposed analytical model, \small Finite Elements (HFSS) }
+
+
+\end{axis}
+\end{tikzpicture}
+\caption{Metamaterial relative electric permitivity given by ${\epsilon_m'}/{\epsilon_0}$ as a function of $b/a$.}
+\label{EpsilonrDC}
+\end{center}
+\end{figure}
+
+\begin{figure}[t] % This is the Fig. 8 code, the permeability for the negligible losses case. 
+\centering
+
+\begin{tikzpicture}[xscale=1,yscale=1]
+
+\begin{axis}[ymax=1.3, ymin=0, xmax=1.09, xmin=0,
+	xlabel = {$b/a$},
+    ylabel = {${\mu}_m'/{\mu}_0$},
+    width = 0.47\textwidth,
+    height = 0.23\textheight ]
+
+\addplot [ domain=0:1, samples=100, color=red,]
+{1-(x/(1-0))^2}; % % this is the analytical formulae for permeability. x variable equals to b/a.
+
+
+\addplot[
+ scatter, only marks,
+    color=blue,
+        mark=square,
+    ]
+    coordinates {(0,1)
+(0.04,0.999933005)
+(0.08,0.999403801)
+(0.12,0.997726704)
+(0.16,0.994167391)
+(0.2,0.989033266)
+(0.24,0.978732564)
+(0.28,0.966772665)
+(0.32,0.950197432)
+(0.36,0.928232655)
+(0.40,0.901388267)
+(0.44,0.869570735)
+(0.48,0.833130291)
+(0.52,0.791962897)
+(0.56,0.745528144)
+(0.60,0.69533352)
+(0.64,0.639830495)
+(0.68,0.579813621)
+(0.72,0.516581055)
+(0.76,0.449851383)
+(0.8,0.380324781)
+(0.84,0.308070989)
+(0.88,0.234029267)
+(0.92,0.15769267)
+(0.96,0.079532287)
+    }; % These are the HFSS numerical results, for b/a = 1/24, 2/24, ... 23/24.
+
+    \legend{\small Proposed analytical model, \small Finite Elements (HFSS) }
+
+
+\end{axis}\end{tikzpicture}\caption{Metamaterial relative magnetic permeability given by ${\mu_m'}/{\mu_0}$ as a function of $b/a$.}
+\label{MurDC}\end{figure}
+
+\begin{figure}[t] % This is the Fig. 9 code, the intrinsic impedance for the negligible losses case. 
+\begin{center}
+\begin{tikzpicture}[xscale=1,yscale=1]
+\tikzset{declare function={A=0.25;B=0.25;}}
+\tikzset{declare function={Cp=A/B;}}
+%\defineconstant{A}{4}
+\begin{axis}[ymax=400, ymin=0, xmax=1.09, xmin=0,
+	xlabel = {$b/a$},
+    ylabel = {$\Re[\eta_m]$ (Ohms)},width = \columnwidth,
+    height = 0.23*\textheight,
+    legend pos=south west]
+
+
+\addplot [ domain=0:1, samples=100, color=red]
+{377*((1-(x)^2)*(1-x))^(1/2)}; % This is the anallytical formulae for the intrinsic impedance, for the negligible losses case. 
+
+%\addlegendentry{\(Modelo de Wood\)}
+\addplot[ scatter, only marks,
+    color=blue,
+    mark=square,
+    ]
+    coordinates {(0.0004,	377)
+(0.04,	376.418924)
+(0.08,	375.5668707)
+(0.12,	373.345032)
+(0.16,	370.4026962)
+(0.2,	365.6244892)
+(0.24,	361.7959822)
+(0.28,	352.4908489)
+(0.32,	342.23695)
+(0.36,	330.7107444)
+(0.40,	317.1484544)
+(0.44,	301.7213807)
+(0.48,	283.289158)
+(0.52,	263.5148553)
+(0.56,	242.5457877)
+(0.6,	220.1050692)
+(0.64,	198.2581246)
+(0.68,	176.1696024)
+(0.72,	153.9536272)
+(0.76,	131.5116806)
+(0.80,	109.1558792)
+(0.84,	87.02040334)
+(0.88,	64.93287834)
+(0.92,	43.07899173)
+(0.96,	21.40904551)
+    }; % These are the numerical results for the impedance from permeabilitty and permitivity fron Figs. 7 and 8.
+
+
+
+    \legend{\small Proposed analytical model, \small HFSS simulations}
+
+
+\end{axis}
+\end{tikzpicture}
+\caption{Real part of the intrinsic impedance of the cubic conductor metamaterial as a function of $b/a$ ratio, for $f$=2.45 GHz and $a$=2.44 mm.}
+\label{Etam}
+\end{center}
+\end{figure}
+\setcounter{figure}{10}
+ \begin{figure}[h] % This is the Fig. 11 code, the attenuation constant as a function of b/a.
+\begin{center} 
+\begin{tikzpicture}[xscale=1,yscale=1]
+
+\tikzset{declare function={f0=2.45*1000000000;sigmac=3.8*10000000;epsilon0=8.83/1000000000000;mu0=4*3.1415927/10000000;}}
+\tikzset{declare function={w0=6.283*f0;c0=1/(epsilon0*mu0)^(1/2);}}
+\tikzset{declare function={lambda0=c0/f0;}}
+\tikzset{declare function={deltac=(0.5*mu0*w0*sigmac)^(-1/2);}}
+\tikzset{declare function={a=lambda0/50;}}
+\tikzset{declare function={RM = 4/(sigmac*deltac);}}
+
+\begin{axis}[ymax=10, ymin=0.000001, xmax=1, xmin=0,
+	xlabel = {$b/a$},
+    ylabel = {$\alpha_m$ (Np/m)},width = \columnwidth,
+    height = 0.22*\textheight,
+    ymode = log,
+    legend pos=north west]
+
+
+
+\addplot [ domain=0.02:0.98, samples=1000, color=red]
+{ (w0/c0)*(0.5*( (1-(x)^2)/(1-(x)) )^0.5)*(x^3)*RM*mu0*w0*x*a/(RM*RM+((mu0*w0*x*a)^2)*(x-(x*x*x*x)))}; % This is the attenuation constant analytical formulae. x is the reatio b/a.
+    
+\addplot[ scatter, only marks,
+    color=blue,
+    mark=square,
+    color=yellow
+    ]
+    coordinates {
+(0.2,	0.001231)
+(0.4,	0.0086)
+(0.6,	0.0266)
+(0.8,	0.0707)
+    }; % Numerical attenuation constant value as a function of b/a, obtained by the FDTD analysis.
+
+
+    \legend{\small Proposed analytical model, \small FDTD simulations}
+
+\end{axis}
+\end{tikzpicture}
+\caption{Attenuation constant $\alpha_m$ of the cubic conductor metamaterial as a function of $b/a$ ratio, for $f$=2.45 GHz and $a=2.45$mm.}
+\label{Attenuation}
+\end{center}
+\end{figure}\setcounter{figure}{12}\begin{figure}[h] % This is the Fig. 13 code, the power transfer efficiency as a function of frequency.
+\begin{center} 
+\begin{tikzpicture}[xscale=1,yscale=1]
+\tikzset{declare function={A=0.25;B=0.25;}}
+\tikzset{declare function={Cp=A/B;}}
+
+\begin{axis}[ymax=1, ymin=0, xmax=4, xmin=0,
+	xlabel = {$f$ (GHz)},
+    ylabel = {$\mathcal{E}_{ff}$},width = \columnwidth,
+    height = 0.28*\textheight,
+    legend pos=south west]
+
+    \addplot[
+    color=blue, dashed,
+    ]
+    coordinates { (	0.05	,	0.360236833	)
+(	0.13	,	0.361603895	)
+(	0.21	,	0.364199662	)
+(	0.29	,	0.368049219802602	)
+(	0.37	,	0.3731896594047	)
+(	0.45	,	0.379670274860105	)
+(	0.53	,	0.387552758028705	)
+(	0.61	,	0.396911333997727	)
+(	0.69	,	0.407832745073818	)
+(	0.77	,	0.420415954249304	)
+(	0.85	,	0.434771386158935	)
+(	0.93	,	0.451019453718126	)
+(	1.01	,	0.469288028297553	)
+(	1.09	,	0.489708398478987	)
+(	1.17	,	0.512409128767921	)
+(	1.25	,	0.537507084176783	)
+(	1.33	,	0.565094752125803	)
+(	1.41	,	0.595222915371776	)
+(	1.49	,	0.627877789209494	)
+(	1.57	,	0.662952060096872	)
+(	1.65	,	0.700210028689171	)
+(	1.73	,	0.739248476043529	)
+(	1.81	,	0.779457106112576	)
+(	1.89	,	0.81998545072329	)
+(	1.97	,	0.859726510349546	)
+(	2.05	,	0.897330018151494	)
+(	2.13	,	0.931258171156402	)
+(	2.21	,	0.959891772437498	)
+(	2.29	,	0.981683691303774	)
+(	2.37	,	0.995340773208668	)
+(	2.45	,	0.999999996184583	)
+(	2.53	,	0.995357483716725	)
+(	2.61	,	0.981716031098706	)
+(	2.69	,	0.959937746265812	)
+(	2.77	,	0.931315157649356	)
+(	2.85	,	0.897395105344555	)
+(	2.93	,	0.859796806884292	)
+(	3.01	,	0.820058323536003	)
+(	3.09	,	0.779530325624174	)
+(	3.17	,	0.739320275065391	)
+(	3.25	,	0.700279095574466	)
+(	3.33	,	0.663017490517668	)
+(	3.41	,	0.627939017958895	)
+(	3.49	,	0.595279643711268	)
+(	3.57	,	0.565146880175545	)
+(	3.65	,	0.537554653033943	)
+(	3.73	,	0.512452273774077	)
+(	3.81	,	0.489747313148982	)
+(	3.89	,	0.46932293749752	)
+(	3.97	,	0.451050594379734	)
+(	4.05	,	0.434798993863764	)
+(	4.13	,	0.420440254227075	)
+(	4.21	,	0.407853946420709	)
+(	4.29	,	0.396929626177462	)
+(	4.37	,	0.387568308943104	)
+(	4.45	,	0.379683229959064	)
+(	4.53	,	0.373200141449382	)
+(	4.61	,	0.368057329005185	)
+(	4.69	,	0.364205476583408	)
+(	4.77	,	0.361607470483515	)
+(	4.85	,	0.360238203974303	)
+(	4.93	,	0.360084423123823	)
+(	5.01	,	0.361144638524902	)
+(	5.09	,	0.363429115083948	)
+(	5.17	,	0.36695994120342	)
+(	5.25	,	0.371771168037645	)
+(	5.33	,	0.377908997552671	)
+(	5.41	,	0.385431983275313	)
+(	5.49	,	0.394411188032854	)
+(	5.57	,	0.404930216457956	)
+(	5.65	,	0.417085003899435	)
+(	5.73	,	0.430983194488787	)
+(	5.81	,	0.446742875948804	)
+(	5.89	,	0.464490353825842	)
+(	5.97	,	0.484356540716108	)
+(	6.05	,	0.506471407164898	)
+(	6.13	,	0.530955796952593	)
+(	6.21	,	0.557909769027133	)
+(	6.29	,	0.587396530321533	)
+(	6.37	,	0.619421038689291	)
+(	6.45	,	0.653902597701159	)
+(	6.53	,	0.690641400497963	)
+(	6.61	,	0.729280212721973	)
+(	6.69	,	0.76926440379851	)
+(	6.77	,	0.809806388273679	)
+(	6.85	,	0.849863912482847	)
+(	6.93	,	0.888144580654569	)
+(	7.01	,	0.923149849660823	)
+(	7.09	,	0.953268229898014	)
+(	7.17	,	0.976917941853145	)
+(	7.25	,	0.992724358748813	)
+(	7.33	,	0.999701441619679	)
+(	7.41	,	0.99739640627817	)
+(	7.49	,	0.985960039729585	)
+(	7.57	,	0.966123016783477	)
+(	7.65	,	0.939084929312751	)
+(	7.73	,	0.906346174862526	)
+(	7.81	,	0.869523781722776	)
+(	7.89	,	0.830188277731087	)
+(	7.97	,	0.789744686295617	)
+(	8.05	,	0.749364433270823	)
+(	8.13	,	0.709962434394001	)
+(	8.21	,	0.672207222973222	)
+(	8.29	,	0.63655090172897	)
+(	8.37	,	0.603267846901764	)
+(	8.45	,	0.572494421849534	)
+(	8.53	,	0.54426514527105	)
+(	8.61	,	0.518543210133764	)
+(	8.69	,	0.495244860960201	)
+(	8.77	,	0.474258047939435	)
+(	8.85	,	0.455456193680157	)
+(	8.93	,	0.438708020934273	)
+(	9.01	,	0.423884337413122	)
+(	9.09	,	0.410862548253405	)
+(	9.17	,	0.399529521135726	)
+(	9.25	,	0.389783291127758	)
+(	9.33	,	0.381533973859196	)
+(	9.41	,	0.374704159692768	)
+(	9.49	,	0.369228986816043	)
+(	9.57	,	0.365056034514419	)
+(	9.65	,	0.362145135726186	)
+(	9.73	,	0.360468176962101	)
+(	9.81	,	0.360008930881641	)
+(	9.89	,	0.360762949828084	)
+(	9.97	,	0.362737535423726	)
+(	10.05	,	0.365951788209206	)
+(	10.13	,	0.370436730751558	)
+(	10.21	,	0.376235486167331	)
+(	10.29	,	0.383403480052724	)
+(	10.37	,	0.3920086156136	)
+
+    }; % Numerical power efficiency value as a function of frequency, obtained analytically (by Eq. 14).
+
+\addplot[
+    color=red, style=semithick,
+    ]
+    coordinates { (	0.07818445063927	,	0.358006286920909		)
+(	0.157502009258819	,	0.359259291131728		)
+(	0.236819567878368	,	0.361531838619723		)
+(	0.316137126497918	,	0.364651437034111		)
+(	0.395454685117467	,	0.368619783912966		)
+(	0.474772243737016	,	0.37347720006635		)
+(	0.554089802356565	,	0.379257340689859		)
+(	0.633407360976115	,	0.385975429449464		)
+(	0.712724919595664	,	0.393654422478261		)
+(	0.792042478215213	,	0.402370812856402		)
+(	0.871360036834762	,	0.412273548202425		)
+(	0.950677595454312	,	0.423548631330728		)
+(	1.02999515407386	,	0.436354692091378		)
+(	1.10931271269341	,	0.450780011530395		)
+(	1.18863027131296	,	0.466857044728676		)
+(	1.26794782993251	,	0.484632616005957		)
+(	1.34726538855206	,	0.504242403988299		)
+(	1.42658294717161	,	0.525918347762799		)
+(	1.50590050579116	,	0.54990594568505		)
+(	1.58521806441071	,	0.576346082076391		)
+(	1.66453562303025	,	0.605208015516574		)
+(	1.7438531816498		,	0.636321814377398		)
+(	1.82317074026935	,	0.669473758584691		)
+(	1.9024882988889		,	0.704454745704393		)
+(	1.98180585750845	,	0.740967318385414		)
+(	2.061123416128		,	0.778413432130384		)
+(	2.14044097474755	,	0.815703851043811		)
+(	2.2197585333671		,	0.851241677649554		)
+(	2.29907609198665	,	0.883117007994321		)
+(	2.3783936506062		,	0.909389045851285		)
+(	2.45771120922575	,	0.928274835566349		)
+(	2.5370287678453		,	0.938194449489292		)
+(	2.61634632646485	,	0.937817647981762		)
+(	2.69566388508439	,	0.926286410501654		)
+(	2.77498144370394	,	0.90358602461826		)
+(	2.85429900232349	,	0.87079897078505		)
+(	2.93361656094304	,	0.829971600311602		)
+(	3.01293411956259	,	0.783605935120561		)
+(	3.09225167818214	,	0.734086952223646		)
+(	3.17156923680169	,	0.683367468473339		)
+(	3.25088679542124	,	0.63297606905743		)
+(	3.33020435404079	,	0.584163045444687		)
+(	3.40952191266034	,	0.537964863699491		)
+(	3.48883947127989	,	0.49512818844777		)
+(	3.56815702989944	,	0.456007368319947		)
+(	3.64747458851899	,	0.420576235935564		)
+(	3.72679214713853	,	0.388581555379025		)
+(	3.80610970575808	,	0.359740236856415		)
+(	3.88542726437763	,	0.333853524078654		)
+(	3.96474482299718	,	0.310787879105011		)
+(	4.04406238161673	,	0.29038041250039		)
+(	4.12337994023628	,	0.272374415779868		)
+(	4.20269749885583	,	0.256445709632065		)
+(	4.28201505747538	,	0.242293757061055		)
+(	4.36133261609493	,	0.229718770692182		)
+(	4.44065017471448	,	0.218623741260874		)
+(	4.51996773333403	,	0.208946936288209		)
+(	4.59928529195358	,	0.200587435317693		)
+(	4.67860285057313	,	0.193386033723573		)
+(	4.75792040919268	,	0.187171807489662		)
+(	4.83723796781222	,	0.181829343956848		)
+(	4.91655552643177	,	0.177327698821874		)
+(	4.99587308505132	,	0.17368758311479		)
+(	5.07519064367087	,	0.170916960277531		)
+(	5.15450820229042	,	0.168970848911764		)
+(	5.23382576090997	,	0.167767904231485		)
+(	5.31314331952952	,	0.167247306239913		)
+(	5.39246087814907	,	0.167416633935544		)
+(	5.47177843676862	,	0.168350275645203		)
+(	5.55109599538817	,	0.17014067242197		)
+(	5.63041355400772	,	0.172845286227351		)
+(	5.70973111262727	,	0.176475437194817		)
+(	5.78904867124682	,	0.181037504682943		)
+(	5.86836622986636	,	0.186593833803986		)
+(	5.94768378848591	,	0.193294592121622		)
+(	6.02700134710546	,	0.20135538821167		)
+(	6.10631890572501	,	0.211000457300319		)
+(	6.18563646434456	,	0.222419955275169		)
+(	6.26495402296411	,	0.235778175749242		)
+(	6.34427158158366	,	0.251268687770774		)
+(	6.42358914020321	,	0.269174589238749		)
+(	6.50290669882276	,	0.289882956025475		)
+(	6.58222425744231	,	0.313826763758334		)
+(	6.66154181606186	,	0.341364830915658		)
+(	6.74085937468141	,	0.372630465597403		)
+(	6.82017693330095	,	0.407372800460929		)
+(	6.8994944919205		,	0.444798924379607		)
+(	6.97881205054005	,	0.48341935516288		)
+(	7.0581296091596		,	0.520912852732318		)
+(	7.13744716777915	,	0.554070643358733		)
+(	7.2167647263987		,	0.578959504871908		)
+(	7.29608228501825	,	0.591498791231098		)
+(	7.3753998436378		,	0.588531914056754		)
+(	7.45471740225735	,	0.569092069898529		)
+(	7.5340349608769		,	0.535139760567473		)
+(	7.61335251949645	,	0.491119997404978		)
+(	7.692670078116		,	0.442440270562839		)
+(	7.77198763673555	,	0.393748922816796		)
+(	7.85130519535509	,	0.34792868114354		)
+(	7.93062275397464	,	0.306109852952982		)
+(	8.00994031259419	,	0.268384645050988		)
+(	8.08925787121374	,	0.234620032241012		)
+(	8.16857542983329	,	0.204823331300645		)
+(	8.24789298845284	,	0.178228058199976		)
+(	8.32721054707239	,	0.1628314945083			)
+(	8.40652810569194	,	0.144489604258938		)
+(	8.48584566431149	,	0.13089661405644		)
+
+    }; % Numerical power efficiency value as a function of frequency, obtained by the FDTD analysis.
+    
+
+
+\addplot[
+    color=black, dashed,
+    ]
+    coordinates { (	0	,	0.358006286920909		)
+(	3.2	,	0.358006286920909		)
+
+
+    };
+    
+\addplot[
+    color=brown,
+    ]
+    coordinates { (	1.99	,	0		)
+(	1.99		,	1			)
+
+
+    };        
+
+\addplot[
+    color=brown,
+    ]
+    coordinates { (	3.07	,	0		)
+(	3.07	,	1			)
+    };     
+
+\addplot[
+   color=brown,
+    ]
+    coordinates { (	0	,	0.75	)
+                  (	4	,	0.75	)
+    };
+
+\draw[<->]	(21,70)	--(30,70);
+\draw[->]	(24.5,84)	--(24.5,91);
+\node[color=black,] at (24.6,79) {$f_0$};
+\node at (26,65) {BW};
+\node[color=brown,] at (7,80) {SWR=3};
+
+
+    \legend{\small Proposed analitycal model, \small FDTD simulations, \small Interface without matching system}
+
+
+\end{axis}
+\end{tikzpicture}
+\caption{Power transfer efficiency ${\mathcal{E}_{ff}}$ from air to water for the proposed matching system of Fig.12 as a function of the operation frequency $f$.}
+\label{s12vsf}
+\end{center}
+\end{figure}
+
+\end{document}
+
+
+
